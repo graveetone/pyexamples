@@ -7,9 +7,9 @@
 # rather than computing them at once and sending them back like a list.
 
 # Ключове слово return надсилає якесь значення в точку виклику
-def divider()
-    print('-'  30)
-def return_some_value()
+def divider():
+    print('-' * 30)
+def return_some_value():
     return 123
 
 returned_value = return_some_value() # тут знаходиться точка виклику - умовно кажучи - той рядок коду, де ми викликаємо функцію чи метод
@@ -18,10 +18,10 @@ divider()
 # функція return_some_value повертає сюди (в точку виклику) число 123, тому цей рядок виглядає так returned_value = 123
 
 # Ключове слово return також виходить з функції - ПРИПИНЯЄ її виконання
-def return_some_value2()
+def return_some_value2():
     print('I will be printed because return IS NOT ABOVE me')
     return 123 # це значення поверне функція
-    print(I will never be printed because return IS ABOVE me)
+    print("I will never be printed because return IS ABOVE me")
 returned_value2 = return_some_value2()
 print(returned_value2)
 divider()

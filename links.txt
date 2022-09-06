@@ -1,0 +1,27 @@
+git pull https://www.freecodecamp.org/news/git-pull-explained/
+Те ж саме, що git fetch (скачати останні зміни) + git merge (змерджити скачані зміни зі старою версією гілки)
+
+
+git fetch https://phoenixnap.com/kb/git-fetch
+Скачує з віддаленого репозиторію останню версію гілки
+
+git amend
+Не є окремою командою, а лише опцією
+
+git commit --amend https://smartlogic.io/blog/git-commit-amend/
+Створюємо коміт, який перезапише останній коміт (наприклад, щоб докинути якісь
+зміни до останнього коміту чи щось виправити в останньому коміті)
+Якщо цей коміт уже є у віддаленому репозиторії, то git push зробити не вийде
+Для того, аби закинути зміни у віддалений репозиторій, доведеться виконувати
+git push ... --force, що не є хорошою практикою, оскільки перезаписує історію комітів
+
+git squash
+Використовується для обʼєднання кількох комітів
+Нехай:
+commit1 fix
+commit2 fix
+commit3 fix
+commit4 merge master into my_branch
+Можна замінити:
+commit1 fix
+commit2 merge master into my_branch
