@@ -7,66 +7,93 @@
 
 import random
 
+
 class RandomStringIterator:
     CHARS = 'qwertyuiopasdfghjklzxcvbnm'
+
     def __init__(self):
         self.char = RandomStringIterator._get_random_char()
+
     def _get_random_char():
         return random.choice(RandomStringIterator.CHARS)
 
-    def __iter__(self): 
+    def __iter__(self):
         return self
 
-    def __next__(self):
-        random_char = self.char
-        self.char = RandomStringIterator._get_random_char()
-        return random_char
-        
-iterator = RandomStringIterator()
+    # def __next__(self):
+    #     random_char = self.char
+    #     self.char = RandomStringIterator._get_random_char()
+    #     return random_char
+
+
+# iterator = RandomStringIterator()
 
 # print(RandomStringIterator().__get_random_char())
 
-print('Let\'s test simple iterator:')
-print(next(iterator))
-print(next(iterator))
-print(next(iterator))
+# print('Let\'s test simple iterator:')
+# print(next(iterator))
+# print(next(iterator))
+# print(next(iterator))
 
-# for c in iter(random_string): # нескінченний цикл
-    # print(c)
-    
-# print(len(list(iter(random_string)))) # тут ми не можемо отримати кількість елементів, бо ітератор ніколи не припиняє викликати метод next - це схоже на нескінченний цикл і по суті ми будемо мати нескінченну кількість випадкових символів
+# for c in iter(): # нескінченний цикл
+# print(c)
+
+# for char in 'abc':
+# next('abc')
+# #   print(char)
+# class List:
+#   def __iter__():
+#     ..
+#     def __next__():
+#       ..
+
+# print(len(list(iter(iterator)))) # тут ми не можемо отримати кількість елементів, бо ітератор ніколи не припиняє викликати метод next - це схоже на нескінченний цикл і по суті ми будемо мати нескінченну кількість випадкових символів
 # Щоб обмежити кількість символів, яку ми ітератор буде повертати (по суті ми вказуємо скільки разів можна викликати метод next), використовують raise StopIteration
 # Перепишемо ітератор так, аби можна було обмежити кількість випадкових символів
 
+
 class RandomStringIteratorStoppable(RandomStringIterator):
     # CHARS = 'qwertyuiopasdfghjklzxcvbnm' # успадковується з предка
-    
+
     def __init__(self, random_chars_count):
         super().__init__()
         self.random_chars_left = random_chars_count
         # self.char = RandomStringIteratorStoppable.__get_random_char() # замінимо на виклик init метода super
- 
+
     # def __get_random_char():
     #     return random.choice(RandomStringIteratorStoppable.CHARS) # наслідуємо з базового класу
 
     # def __iter__(self): # наслідуємо з базового класу
     #     return self
 
-    def __next__(self):
-        if self.random_chars_left:
-            random_char = self.char
-            self.char = RandomStringIteratorStoppable._get_random_char()
-            self.random_chars_left -= 1
-            return random_char
-        else:  # примітка! тут else можна пропустити, бо return вийде з функції і код після блоку if не виконається
-            raise StopIteration 
-            # коли ми отримаємо від ітератора потрібну кількість випадкових символів, то використаємо raise StopIteration statement. Це statement, а не Exception
-            # коли ітератор зустріне цей стейтмент, то припинить викликати метод next і повертати випадкові символи
-            # Спойлер: в масиві (list) також використовуються ітератори, завдяки чому ми можемо писати for element in [1, 2, 3 ]
-            # Це означає, що клас Array в Python має методи iter та next. raise StopIteration для Array буде викликаний, коли ми дійдемо до останнього елементу - номер поточної ітерації буде рівний кількості елементів в масиві (len)
-        
-print('Let\'s test stoppable iterator:')
-stoppable_iterator = RandomStringIteratorStoppable(3)
+    # def __next__(self):
+    #     if self.random_chars_left:
+    #         random_char = self.char
+    #         self.char = RandomStringIteratorStoppable._get_random_char()
+    #         self.random_chars_left -= 1
+    #         return random_char
+    #     else:  # примітка! тут else можна пропустити, бо return вийде з функції і код після блоку if не виконається
+    #         raise StopIteration
+    # коли ми отримаємо від ітератора потрібну кількість випадкових символів, то використаємо raise StopIteration statement. Це statement, а не Exception
+    # коли ітератор зустріне цей стейтмент, то припинить викликати метод next і повертати випадкові символи
+    # Спойлер: в масиві (list) також використовуються ітератори, завдяки чому ми можемо писати for element in [1, 2, 3 ]
+    # Це означає, що клас Array в Python має методи iter та next. raise StopIteration для Array буде викликаний, коли ми дійдемо до останнього елементу - номер поточної ітерації буде рівний кількості елементів в масиві (len)
 
-for char in stoppable_iterator:
-    print(char)
+
+print('Let\'s test stoppable iterator:')
+# stoppable_iterator = RandomStringIteratorStoppable(5)
+
+# for char in stoppable_iterator:
+#     print(char)
+
+# class List:
+#   def __next__():
+#     if len > 0:
+#       return element
+#     else:
+#       raise StopIteration
+
+arr = [1, 2, 3]
+
+for i in iter(arr, sentinel=2):
+    print(i)

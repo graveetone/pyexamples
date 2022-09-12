@@ -15,7 +15,7 @@ for element in array:
 
 # Можна використати enumerate
 print('With enumerate')
-for index, element in enumerate(array, start=0):
+for index, element in enumerate(array):
     print(f"Index: {index}")
     print(f"Element: {element}")
 

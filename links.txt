@@ -25,3 +25,20 @@ commit4 merge master into my_branch
 Можна замінити:
 commit1 fix
 commit2 merge master into my_branch
+
+changes
+git add .
+git commit -m ''
+
+changes
+git add .
+git commit -m ''
+
+changes
+git add .
+git commit -m ''
+
+pick hash message_from_3_commits
+squash hash message
+squash hash message
+

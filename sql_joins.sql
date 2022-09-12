@@ -10,3 +10,4 @@ SELECT * FROM Orders LEFT JOIN Customers WHERE Customers.customer_id == Orders.c
 -- OUTER 
 
 -- https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/
+-- INNER JOIN, OUTER, 

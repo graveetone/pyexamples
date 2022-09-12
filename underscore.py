@@ -6,6 +6,7 @@
 import os
 # os.system("python3") # виконуємо команду python3 в терміналі
 # _ можна використовувати, як змінну, що містить попереднє значення
+
 #2 ігнорування значень
 array = [1, 2, 3, 4, 5]
 one, *_, five = array # пропускаємо усі значення, крім першого та останнього
@@ -28,7 +29,12 @@ print(big_number == readable_big_number) # випадку, але це чита�
 
 #5 _variable
 from helpers import * # імпортуємо усе
-# print(_test_function()) # тут помилка
+from random import *
+
+def _test_function():
+  print('hello')
+
+print(_test_function()) # тут помилка
 
 # можливий інший варіант
 class Test:
@@ -47,18 +53,33 @@ class Test:
     self.__private_variable = 1234
 
 # print(Test().__private_variable) # захищена змінна - недоступна
-print(Test()._Test__private_variable) # але до неї можна доступитися
+# print(Test()._Test__private_variable) # але до неї можна доступитися
 
 #8 __name__
 # https://www.tutorialsteacher.com/python/magic-methods-in-python#:~:text=Python%20%2D%20Magic%20or%20Dunder%20Methods,class%20on%20a%20certain%20action.
 
-class Test:
+class Meal:
   def __init__(self, value):
-    self.value = value
+    self.energy = value
 
-  def __add__(self, other):
-    return self.value + other.value
+  def __mul__(self, x):
+    return self.energy ** x.energy
 
-print(Test(1) + Test(3))
-print(Test(1).__add__(Test(3)))
+  def __getitem__(self, identifier):
+    return identifier * self.energy
+
+  def append(self, item):
+    self.energy + item
+
+# print(Test(1) + Test(3))
+# print(Test(1).__add__(Test(3)))
+
+apple = Meal(100)
+pear = Meal(30)
+
+print(apple[4])
+
+
+
+
     
